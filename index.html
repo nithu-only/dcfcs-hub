@@ -1,5 +1,161 @@
 
-<link rel="stylesheet" href"style.css">
+<style>
+
+/* =========================================
+   EMERALD BUTTON
+========================================= */
+
+.emerald-button {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0.75em 1.25em;
+  padding-right: 3.5em;
+  background: transparent;
+  color: #d8ffe8; /* pale emerald-tinted text */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  filter: brightness(0.95);
+  border: none;
+}
+
+/* Emerald animated border */
+.emerald-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+
+  /* EMERALD GRADIENT – smooth, multi-shade green */
+  background: linear-gradient(
+    90deg,
+    #144d32,  /* deep forest */
+    #1f7a54,  /* rich emerald */
+    #2f9e6f,  /* bright emerald */
+    #53d19b,  /* light jade */
+    #2f9e6f,  /* repeat emerald */
+    #1f7a54,  /* deep emerald */
+    #144d32   /* forest */
+  );
+
+  z-index: -1;
+  border-radius: 0px;
+  background-size: 300% 100%;
+  transition: background-position 0.8s ease;
+
+  /* Mask to create the hollow border effect */
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+/* Animate emerald gradient */
+.emerald-button:hover::before {
+  background-position: 100% 0;
+}
+
+/* Press effect */
+.emerald-button:active {
+  transform: translateY(2px) scale(0.98);
+  filter: brightness(0.85);
+}
+
+/* Arrow – emerald glow version */
+.emerald-button::after {
+  content: "\2794";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+
+  color: #6fffc0; /* bright mint-emerald */
+  transition: transform 0.3s ease, color 0.3s ease;
+  pointer-events: none;
+}
+
+/* Arrow animation + deeper emerald on hover */
+.emerald-button:hover::after {
+  animation: bounceright 0.4s alternate ease-in-out infinite;
+  color: #2f9e6f; /* emerald */
+}
+
+@keyframes bounceright {
+  from { transform: translateX(0); }
+  to   { transform: translateX(4px); }
+}
+
+@media (max-width: 600px) {
+  .emerald-button {
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 0.65em 1em;
+    padding-right: 3em;
+  }
+
+  .emerald-button::after {
+    right: 0.75em;
+    font-size: 0.95em;
+  }
+}
+
+.emerald-heading {
+  background: linear-gradient(
+    90deg,
+    #144d32, /* deep forest */
+    #1f7a54, /* emerald */
+    #2f9e6f, /* bright emerald */
+    #53d19b  /* jade */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+}
+
+
+html,
+body {
+  background-color: #111;
+
+  padding-bottom: 40vh;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+.centered-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem; /* spacing between the buttons */
+}
+
+
+</style>
 
 <!-- Container centers the buttons -->
 <div class="centered-buttons">
