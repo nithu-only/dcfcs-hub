@@ -1,112 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>DCF Attendance</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DCF Attendance</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/teacher.css">
-    <link rel="stylesheet" href="css/flatpickr-theme.css">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="config.js"></script>
-    <script defer src="js/common.js"></script>
-    <script defer src="js/teacher.js"></script>
+    body{
+      background:#0b0b0b;
+      color:white;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:520px;
+      background:#111;
+      border:1px solid rgba(47,158,111,.35);
+      border-radius:20px;
+      box-shadow:0 0 25px rgba(47,158,111,.12);
+      padding:40px 30px;
+      text-align:center;
+    }
+
+    h1{
+      color:#2f9e6f;
+      font-size:38px;
+      margin-bottom:10px;
+    }
+
+    .sub{
+      color:#9ad9b8;
+      margin-bottom:35px;
+      font-size:15px;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      padding:16px;
+      margin-bottom:15px;
+      border:none;
+      border-radius:14px;
+      background:#2f9e6f;
+      color:white;
+      font-size:17px;
+      cursor:pointer;
+      transition:.2s;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .btn:hover{
+      background:#37b77f;
+      transform:translateY(-1px);
+    }
+
+    .btn.secondary{
+      background:#151515;
+      border:1px solid #2f9e6f;
+    }
+
+    .footer{
+      margin-top:18px;
+      color:#777;
+      font-size:13px;
+    }
+
+    @media(max-width:600px){
+      h1{
+        font-size:30px;
+      }
+
+      .card{
+        padding:30px 22px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="loginPage" class="wrapper">
-        <div class="card">
-            <h1>Department of DCF</h1>
+  <div class="card">
+    <h1>Department of DCF</h1>
+    <div class="sub">Attendance Management System</div>
 
-            <input id="username" class="input" placeholder="Username">
+    <a href="teacher/index.html" class="btn">
+      Teacher Portal
+    </a>
 
-            <div class="password-box">
-                <input id="password" class="input" type="password" placeholder="Password">
+    <a href="student/index.html" class="btn secondary">
+      Student Portal
+    </a>
 
-                <span class="toggle-eye" onclick="togglePassword()">
-                    <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                </span>
-            </div>
-
-            <button class="btn" onclick="login()">Login</button>
-        </div>
+    <div class="footer">
+      © Department of DCF
     </div>
-
-    <div id="attendancePage" class="wrapper hidden">
-        <div class="card">
-
-            <div class="topbar">
-                <div>
-                    <h1 style="margin:0">Mark Attendance</h1>
-                    <div id="welcome"></div>
-                </div>
-
-                <button class="btn logout" onclick="logout('teacherData')">
-                    Logout
-                </button>
-            </div>
-
-            <div class="controls">
-                <input type="text" id="date" placeholder="Select Date" readonly>
-
-                <select id="hour">
-                    <option value="9-10">9-10</option>
-                    <option value="10-11">10-11</option>
-                    <option value="11-12">11-12</option>
-                    <option value="12-1">12-1</option>
-                    <option value="2-3">2-3</option>
-                    <option value="3-4">3-4</option>
-                </select>
-
-                <select id="sheetName" onchange="loadStudents()"></select>
-            </div>
-
-            <input
-                type="text"
-                id="searchStudent"
-                class="input"
-                placeholder="🔍 Search RegNo / Name"
-                oninput="filterStudents()"
-                style="margin-bottom:18px;"
-            >
-
-            <div id="studentList"></div>
-
-            <button
-                id="submitAttendence"
-                class="btn"
-                onclick="submitAttendance()"
-            >
-                Submit Attendance
-            </button>
-
-        </div>
-    </div>
-
-    <div id="modalOverlay" class="modal-overlay hidden">
-        <div class="modal-box">
-            <h3 id="modalTitle">Message</h3>
-            <p id="modalText"></p>
-
-            <div class="modal-actions">
-                <button id="modalCancel" class="btn secondary hidden">
-                    Cancel
-                </button>
-
-                <button id="modalOk" class="btn">
-                    OK
-                </button>
-            </div>
-        </div>
-    </div>
+  </div>
 
 </body>
 </html>
