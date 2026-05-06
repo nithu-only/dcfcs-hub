@@ -1,0 +1,62 @@
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.student {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    background: #151515;
+    border: 1px solid rgba(47,158,111,.18);
+    transition: .2s;
+}
+
+.student:hover {
+    background: #1b1b1b;
+    transform: translateY(-1px);
+}
+
+.student span {
+    font-size: 15px;
+}
+
+.student input {
+    width: 22px;
+    height: 22px;
+    accent-color: #2f9e6f;
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box .input {
+    padding-right: 50px;
+}
+
+.toggle-eye {
+    position: absolute;
+    right: 18px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #9ad9b8;
+    user-select: none;
+}
+
+.toggle-eye:hover {
+    color: #2f9e6f;
+}
+
+@media(max-width:700px) {
+    .controls {
+        grid-template-columns: 1fr;
+    }
+}
