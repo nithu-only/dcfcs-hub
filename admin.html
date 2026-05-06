@@ -1,332 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>DCF Admin Dashboard</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/flatpickr-theme.css">
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="config.js"></script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #0b0b0b;
-            color: white;
-            min-height: 100vh;
-        }
-
-        .wrapper {
-            width: 100%;
-            max-width: 850px;
-            margin: auto;
-            padding: 30px 20px;
-        }
-
-        .card {
-            background: #111;
-            border: 1px solid rgba(47, 158, 111, .35);
-            border-radius: 18px;
-            box-shadow: 0 0 25px rgba(47, 158, 111, .12);
-            padding: 28px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #2f9e6f;
-            font-size: 34px;
-        }
-
-        #loginPage {
-            margin-top: 90px;
-        }
-
-        .input,
-        select,
-        #date {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            border: 1px solid #2f9e6f;
-            background: #0d0d0d;
-            color: white;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .input:focus,
-        select:focus,
-        #date:focus {
-            box-shadow: 0 0 10px rgba(47, 158, 111, .2);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-            background: #2f9e6f;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: .2s;
-        }
-
-        .btn:hover {
-            background: #37b77f;
-        }
-
-        .logout {
-            width: auto;
-            padding: 10px 18px;
-            border-radius: 10px;
-            background: #1d1d1d;
-            border: 1px solid #2f9e6f;
-        }
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        #welcome {
-            color: #9ad9b8;
-            font-size: 14px;
-        }
-
-        .controls {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr auto;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .summary {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-
-        .stat {
-            background: #151515;
-            border: 1px solid rgba(47, 158, 111, .18);
-            border-radius: 14px;
-            padding: 25px;
-            text-align: center;
-            transition: .2s;
-        }
-
-        .stat:hover {
-            background: #1b1b1b;
-            transform: translateY(-2px);
-        }
-
-        .stat h3 {
-            color: #9ad9b8;
-            margin-bottom: 12px;
-            font-size: 15px;
-        }
-
-        .stat p {
-            color: #2f9e6f;
-            font-size: 36px;
-            font-weight: bold;
-        }
-
-        .student {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 18px;
-            margin-bottom: 10px;
-            border-radius: 14px;
-            background: #151515;
-            border: 1px solid rgba(47, 158, 111, .18);
-            transition: .2s;
-        }
-
-        .student:hover {
-            background: #1b1b1b;
-            transform: translateY(-1px);
-        }
-
-        .badge {
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .present {
-            background: rgba(47, 158, 111, .12);
-            color: #57d696;
-            border: 1px solid rgba(47, 158, 111, .35);
-        }
-
-        .absent {
-            background: rgba(220, 53, 69, .12);
-            color: #ff7d88;
-            border: 1px solid rgba(220, 53, 69, .35);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, .3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin .7s linear infinite;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* flatpickr custom theme */
-        .flatpickr-calendar {
-            background: #111 !important;
-            border: 1px solid #2f9e6f !important;
-            box-shadow: 0 0 25px rgba(47, 158, 111, .18) !important;
-            border-radius: 16px !important;
-        }
-
-        .flatpickr-months .flatpickr-month {
-            color: white !important;
-            fill: white !important;
-        }
-
-        .flatpickr-weekday {
-            color: #2f9e6f !important;
-            font-weight: 600;
-        }
-
-        .flatpickr-day {
-            color: white !important;
-            border-radius: 10px !important;
-        }
-
-        .flatpickr-day:hover {
-            background: #1d1d1d !important;
-        }
-
-        .flatpickr-day.selected {
-            background: #2f9e6f !important;
-            border-color: #2f9e6f !important;
-        }
-
-        .flatpickr-day.today {
-            border-color: #2f9e6f !important;
-        }
-
-        .flatpickr-prev-month svg,
-        .flatpickr-next-month svg {
-            fill: white !important;
-        }
-
-        .flatpickr-monthDropdown-months,
-        .flatpickr-monthDropdown-month {
-            background: #111 !important;
-            color: white !important;
-        }
-
-        .numInputWrapper input {
-            background: transparent !important;
-            color: white !important;
-            border: none !important;
-        }
-
-        .numInputWrapper span {
-            filter: invert(1);
-            opacity: .8;
-        }
-
-        .flatpickr-day.prevMonthDay,
-        .flatpickr-day.nextMonthDay {
-            visibility: hidden !important;
-            pointer-events: none;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .65);
-            backdrop-filter: blur(6px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .modal-box {
-            width: 420px;
-            max-width: 90%;
-            background: #111;
-            border: 1px solid #2f9e6f;
-            border-radius: 18px;
-            padding: 28px;
-            box-shadow: 0 0 30px rgba(47, 158, 111, .18);
-        }
-
-        .modal-box h3 {
-            color: #2f9e6f;
-            margin-bottom: 12px;
-            text-align: center;
-            font-size: 24px;
-        }
-
-        .modal-box p {
-            color: #eee;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        @media(max-width:700px) {
-
-            .controls,
-            .summary {
-                grid-template-columns: 1fr;
-            }
-
-            .topbar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-        }
-    </style>
+    <script defer src="js/common.js"></script>
+    <script defer src="js/admin.js"></script>
 </head>
-
 <body>
 
     <div id="loginPage" class="wrapper">
         <div class="card">
             <h1>Department of DCF</h1>
+
             <input id="username" class="input" placeholder="Username">
             <input id="password" class="input" type="password" placeholder="Password">
-            <button id="loginBtn" class="btn" onclick="login()">Login</button>
+
+            <button id="loginBtn" class="btn" onclick="login()">
+                Login
+            </button>
         </div>
     </div>
 
@@ -335,15 +35,27 @@
 
             <div class="topbar">
                 <div>
-                    <h1 style="margin:0;text-align:left;">Admin Dashboard</h1>
+                    <h1 style="margin:0;text-align:left;">
+                        Admin Dashboard
+                    </h1>
                     <div id="welcome"></div>
                 </div>
-                <button class="btn logout" onclick="logout()">Logout</button>
+
+                <button class="btn logout" onclick="logoutAdmin()">
+                    Logout
+                </button>
             </div>
 
             <div class="controls">
                 <select id="sheetName"></select>
-                <input type="text" id="date" placeholder="Select Date" readonly>
+
+                <input
+                    type="text"
+                    id="date"
+                    placeholder="Select Date"
+                    readonly
+                >
+
                 <select id="hour">
                     <option value="9-10">9-10</option>
                     <option value="10-11">10-11</option>
@@ -352,7 +64,14 @@
                     <option value="2-3">2-3</option>
                     <option value="3-4">3-4</option>
                 </select>
-                <button id="loadBtn" class="btn" onclick="loadReport()">Load</button>
+
+                <button
+                    id="loadBtn"
+                    class="btn"
+                    onclick="loadReport()"
+                >
+                    Load
+                </button>
             </div>
 
             <div class="summary">
@@ -360,14 +79,17 @@
                     <h3>Total Students</h3>
                     <p id="total">0</p>
                 </div>
+
                 <div class="stat">
                     <h3>Present</h3>
                     <p id="present">0</p>
                 </div>
+
                 <div class="stat">
                     <h3>Absent</h3>
                     <p id="absent">0</p>
                 </div>
+
                 <div class="stat">
                     <h3>Attendance %</h3>
                     <p id="percent">0%</p>
@@ -375,7 +97,10 @@
             </div>
 
             <div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;">
-                <button class="btn logout" onclick="downloadCSV()">Download Today's Attendance</button>
+                <button class="btn logout" onclick="downloadCSV()">
+                    Download Today's Attendance
+                </button>
+
                 <button class="btn logout" onclick="downloadFullAttendance()">
                     Download Full Attendance
                 </button>
@@ -386,290 +111,22 @@
         </div>
     </div>
 
-
-
     <div id="modalOverlay" class="modal-overlay hidden">
         <div class="modal-box">
             <h3 id="modalTitle">Message</h3>
             <p id="modalText"></p>
-            <button class="btn" onclick="closeModal()">OK</button>
+
+            <div class="modal-actions">
+                <button id="modalCancel" class="btn secondary hidden">
+                    Cancel
+                </button>
+
+                <button id="modalOk" class="btn">
+                    OK
+                </button>
+            </div>
         </div>
     </div>
 
-    <script>
-        const webAppURL = CONFIG.WEB_APP_URL;
-
-        const SUBJECT_NAMES = {
-            BSC_CPP: "BSc - C++",
-            BSC_CPP_PRACT: "BSc - C++ (Practical)",
-            BSC_PYTHON: "BSc - Python",
-            BSC_PYTHON_PRACT: "BSc - Python (Practical)",
-            MSC_SCRIPT: "MSc - Scripting",
-            MSC_SCRIPT_PRACT: "MSc - Scripting (Practical)"
-        };
-
-        let admin = null;
-
-        document.addEventListener("DOMContentLoaded", () => {
-            flatpickr("#date", {
-                dateFormat: "Y-m-d",
-                defaultDate: "today",
-                disableMobile: true,
-                showMonths: 1
-            });
-
-            const saved = localStorage.getItem("adminData");
-            if (saved) {
-                admin = JSON.parse(saved);
-                openDashboard();
-            }
-        });
-
-        function showAlert(title, message) {
-            document.getElementById("modalTitle").innerText = title;
-            document.getElementById("modalText").innerText = message;
-            document.getElementById("modalOverlay").classList.remove("hidden");
-        }
-
-        function closeModal() {
-            document.getElementById("modalOverlay").classList.add("hidden");
-        }
-
-        async function login() {
-            const username = document.getElementById("username").value.trim();
-            const password = document.getElementById("password").value.trim();
-            const btn = document.getElementById("loginBtn");
-            const old = btn.innerHTML;
-
-            if (!username || !password) {
-                showAlert("Missing Details", "Enter username and password");
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span>Logging in...';
-
-            try {
-                const response = await fetch(webAppURL, {
-                    method: "POST",
-                    body: JSON.stringify({
-                        action: "login",
-                        username,
-                        password
-                    })
-                });
-
-                const res = await response.json();
-
-                if (!res.success) {
-                    showAlert("Login Failed", res.message);
-                } else if (String(res.role).trim().toUpperCase() !== "ADMIN") {
-                    showAlert("Access Denied", "Admin access only");
-                } else {
-                    admin = res;
-                    localStorage.setItem("adminData", JSON.stringify(admin));
-                    openDashboard();
-                }
-
-            } catch {
-                showAlert("Error", "Unable to login");
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = old;
-            }
-        }
-
-        function openDashboard() {
-            document.getElementById("loginPage").classList.add("hidden");
-            document.getElementById("dashboard").classList.remove("hidden");
-            document.getElementById("welcome").innerText = "Welcome, " + admin.name;
-
-            const dropdown = document.getElementById("sheetName");
-            dropdown.innerHTML = "";
-
-            Object.keys(SUBJECT_NAMES).forEach(key => {
-                const option = document.createElement("option");
-                option.value = key;
-                option.textContent = SUBJECT_NAMES[key];
-                dropdown.appendChild(option);
-            });
-        }
-
-        function logout() {
-            localStorage.removeItem("adminData");
-            location.reload();
-        }
-
-        async function loadReport() {
-            const btn = document.getElementById("loadBtn");
-            const old = btn.innerHTML;
-
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span>Loading...';
-
-            try {
-                const response = await fetch(webAppURL, {
-                    method: "POST",
-                    body: JSON.stringify({
-                        action: "report",
-                        username: admin.username,
-                        sheetName: document.getElementById("sheetName").value,
-                        date: document.getElementById("date").value,
-                        hour: document.getElementById("hour").value
-                    })
-                });
-
-                const res = await response.json();
-
-                if (!res.success) {
-                    showAlert("Message", res.message);
-                    return;
-                }
-
-                document.getElementById("total").innerText = res.total;
-                document.getElementById("present").innerText = res.present;
-                document.getElementById("absent").innerText = res.absent;
-                document.getElementById("percent").innerText = res.percentage + "%";
-
-                const list = document.getElementById("studentList");
-                list.innerHTML = "";
-
-                res.students.forEach(student => {
-                    const div = document.createElement("div");
-                    div.className = "student";
-                    div.innerHTML = `
-                        <span>${student.RegNo} - ${student.Name}</span>
-                        <span class="badge ${student.Status === "Present" ? "present" : "absent"}">
-                            ${student.Status || "N/A"}
-                        </span>
-                    `;
-                    list.appendChild(div);
-                });
-
-            } catch {
-                showAlert("Error", "Failed to load report");
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = old;
-            }
-        }
-
-        // 2) ADD THIS inside <script> (below loadReport function)
-
-        function downloadCSV() {
-
-            const rows =
-                document.querySelectorAll("#studentList .student");
-
-            if (!rows.length) {
-                showAlert("Message", "No report loaded");
-                return;
-            }
-
-            let csv = "RegNo,Name,Status\n";
-
-            rows.forEach(row => {
-                const text =
-                    row.querySelector("span").innerText;
-
-                const status =
-                    row.querySelector(".badge").innerText;
-
-                const parts =
-                    text.split(" - ");
-
-                const regno = parts[0];
-                const name = parts.slice(1).join(" - ");
-
-                csv += `"${regno}","${name}","${status}"\n`;
-            });
-
-            const blob =
-                new Blob([csv], {
-                    type: "text/csv"
-                });
-
-            const url =
-                URL.createObjectURL(blob);
-
-            const a =
-                document.createElement("a");
-
-            const subject =
-                document.getElementById("sheetName").value;
-
-            const date =
-                document.getElementById("date").value;
-
-            const hour =
-                document.getElementById("hour").value;
-
-            a.href = url;
-            a.download =
-                `${subject}_${date}_${hour}.csv`;
-
-            a.click();
-
-            URL.revokeObjectURL(url);
-        }
-
-        // ADD inside admin.html <script>
-
-        async function downloadFullAttendance() {
-
-            try {
-
-                const response = await fetch(webAppURL, {
-                    method: "POST",
-                    body: JSON.stringify({
-                        action: "fullReport",
-                        username: admin.username,
-                        sheetName: document.getElementById("sheetName").value
-                    })
-                });
-
-                const res = await response.json();
-
-                if (!res.success) {
-                    showAlert("Message", res.message);
-                    return;
-                }
-
-                let csv =
-                    res.header.map(v => `"${v}"`).join(",") + "\n";
-
-                res.students.forEach(row => {
-                    csv += row.map(v => `"${v || ""}"`).join(",") + "\n";
-                });
-
-                const blob =
-                    new Blob([csv], {
-                        type: "text/csv"
-                    });
-
-                const url =
-                    URL.createObjectURL(blob);
-
-                const a =
-                    document.createElement("a");
-
-                const subject =
-                    document.getElementById("sheetName").value;
-
-                a.href = url;
-                a.download =
-                    subject + "_FULL_ATTENDANCE.csv";
-
-                a.click();
-
-                URL.revokeObjectURL(url);
-
-            } catch (err) {
-                showAlert("Error", "Download failed");
-            }
-        }
-    </script>
-
 </body>
-
 </html>
