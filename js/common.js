@@ -1,12 +1,22 @@
 const webAppURL = CONFIG.WEB_APP_URL;
 
 const SUBJECT_NAMES = {
-    BSC_CPP: "BSc - C++",
-    BSC_CPP_PRACT: "BSc - C++ (Practical)",
-    BSC_PYTHON: "BSc - Python",
-    BSC_PYTHON_PRACT: "BSc - Python (Practical)",
-    MSC_SCRIPT: "MSc - Scripting",
-    MSC_SCRIPT_PRACT: "MSc - Scripting (Practical)"
+    BSC_C:"BSc - C Programming",
+    BSC_PRACT: "BSc - C Programming (Practical)",
+    BSC_JAVA: "BSc - Java Programming",
+    BSC_JAVA_PRACT: "BSc - Java Programming (Practical",
+    BSC_CLOUD: "BSc - Cloud Computing",
+    MSC_CPP: "BSc - C++ Programming",
+    MSC_CPP_PRACT: "BSc - C++ Programming (Practical)",
+    MSC_PYTHON: "MSc - Python Programming",
+    MSC_PYTHON_PRACT: "MSc - Python Programming (Practical)",
+
+    BSC_CPP: "BSc - C++ Programming",
+    BSC_CPP_PRACT: "BSc - C++ Programming(Practical)",
+    BSC_PYTHON: "BSc - Python Programming",
+    BSC_PYTHON_PRACT: "BSc - Python Programming (Practical)",
+    MSC_SCRIPT: "MSc - Scripting Language",
+    MSC_SCRIPT_PRACT: "MSc - Scripting Language (Practical)"
 };
 
 function initDatePicker() {
