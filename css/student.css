@@ -92,6 +92,27 @@ h1 {
   border: 1px solid #2f9e6f;
 }
 
+.btn.secondary {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: #151515;
+  border: 1px solid #2f9e6f;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .2s;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin-top: 14px;
+}
+
+.btn.secondary:hover {
+  background: #1d1d1d;
+  border-color: #37b77f;
+}
+
 #welcome {
   color: #9ad9b8;
   font-size: 14px;
