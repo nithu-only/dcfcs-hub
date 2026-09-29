@@ -1,6 +1,8 @@
 const webAppURL =
     CONFIG.WEB_APP_URL;
 
+const STORAGE_KEY = "dcf_student_register_no";
+
 const SUBJECT_NAMES = {
     BSC_C:"BSc - C Programming",
     BSC_C_PRACT: "BSc - C Programming (Practical)",
@@ -26,6 +28,8 @@ let portalData = null;
 async function searchAttendance() {
     const regNo =
         document.getElementById("regNo").value.trim();
+
+    const rememberCheckbox = document.getElementById("rememberRegNo");
 
     const btn =
         document.getElementById("searchBtn");
@@ -59,6 +63,13 @@ async function searchAttendance() {
         if (!res.success) {
             showAlert("Message", res.message);
             return;
+        }
+
+        // Save register number if checkbox is checked
+        if (rememberCheckbox.checked) {
+            localStorage.setItem(STORAGE_KEY, regNo);
+        } else {
+            localStorage.removeItem(STORAGE_KEY);
         }
 
         portalData = res;
@@ -229,13 +240,28 @@ function showAlert(title, message) {
     };
 }
 
-// ENTER KEY SEARCH
+// ENTER KEY SEARCH & LOAD SAVED REGISTER NUMBER
 document.addEventListener("DOMContentLoaded", () => {
-    document
-        .getElementById("regNo")
-        .addEventListener("keypress", e => {
-            if (e.key === "Enter") {
-                searchAttendance();
-            }
-        });
+    // Load saved register number from localStorage
+    const savedRegNo = localStorage.getItem(STORAGE_KEY);
+    const regNoInput = document.getElementById("regNo");
+    const rememberCheckbox = document.getElementById("rememberRegNo");
+
+    if (savedRegNo) {
+        regNoInput.value = savedRegNo;
+        rememberCheckbox.checked = true;
+    }
+
+    regNoInput.addEventListener("keypress", e => {
+        if (e.key === "Enter") {
+            searchAttendance();
+        }
+    });
+
+    // Handle checkbox change - remove saved value if unchecked
+    rememberCheckbox.addEventListener("change", () => {
+        if (!rememberCheckbox.checked) {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+    });
 });

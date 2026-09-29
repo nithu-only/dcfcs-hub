@@ -60,6 +60,28 @@ h1 {
   box-shadow: 0 0 10px rgba(47, 158, 111, .2);
 }
 
+.remember-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #d7d7d7;
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2f9e6f;
+  cursor: pointer;
+}
+
+.remember-label:hover {
+  color: #fff;
+}
+
 .btn {
   width: 100%;
   padding: 14px;
@@ -111,6 +133,24 @@ h1 {
 .btn.secondary:hover {
   background: #1d1d1d;
   border-color: #37b77f;
+}
+
+.resources-link {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.resources-link a {
+  color: #2f9e6f;
+  text-decoration: underline;
+  font-size: 15px;
+  transition: color .2s, opacity .2s;
+  cursor: pointer;
+}
+
+.resources-link a:hover {
+  color: #37b77f;
+  opacity: .85;
 }
 
 #welcome {
