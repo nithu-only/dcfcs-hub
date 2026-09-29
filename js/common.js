@@ -2,7 +2,7 @@ const webAppURL = CONFIG.WEB_APP_URL;
 
 const SUBJECT_NAMES = {
     BSC_C:"BSc - C Programming",
-    BSC_PRACT: "BSc - C Programming (Practical)",
+    BSC_C_PRACT: "BSc - C Programming (Practical)",
     BSC_JAVA: "BSc - Java Programming",
     BSC_JAVA_PRACT: "BSc - Java Programming (Practical",
     BSC_CLOUD: "BSc - Cloud Computing",
