@@ -7,19 +7,12 @@ const SUBJECT_NAMES = {
     BSC_C:"BSc - C Programming",
     BSC_C_PRACT: "BSc - C Programming (Practical)",
     BSC_JAVA: "BSc - Java Programming",
-    BSC_JAVA_PRACT: "BSc - Java Programming (Practical",
+    BSC_JAVA_PRACT: "BSc - Java Programming (Practical)",
     BSC_CLOUD: "BSc - Cloud Computing",
-    MSC_CPP: "BSc - C++ Programming",
-    MSC_CPP_PRACT: "BSc - C++ Programming (Practical)",
+    MSC_CPP: "Msc - C++ Programming",
+    MSC_CPP_PRACT: "Msc - C++ Programming (Practical)",
     MSC_PYTHON: "MSc - Python Programming",
     MSC_PYTHON_PRACT: "MSc - Python Programming (Practical)",
-
-    BSC_CPP: "BSc - C++ Programming",
-    BSC_CPP_PRACT: "BSc - C++ Programming (Practical)",
-    BSC_PYTHON: "BSc - Python Programming",
-    BSC_PYTHON_PRACT: "BSc - Python Programming (Practical)",
-    MSC_SCRIPT: "MSc - Scripting Language",
-    MSC_SCRIPT_PRACT: "MSc - Scripting Language (Practical)"
 };
 
 let portalData = null;

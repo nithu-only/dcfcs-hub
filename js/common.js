@@ -10,13 +10,6 @@ const SUBJECT_NAMES = {
     MSC_CPP_PRACT: "BSc - C++ Programming (Practical)",
     MSC_PYTHON: "MSc - Python Programming",
     MSC_PYTHON_PRACT: "MSc - Python Programming (Practical)",
-
-    BSC_CPP: "BSc - C++ Programming",
-    BSC_CPP_PRACT: "BSc - C++ Programming(Practical)",
-    BSC_PYTHON: "BSc - Python Programming",
-    BSC_PYTHON_PRACT: "BSc - Python Programming (Practical)",
-    MSC_SCRIPT: "MSc - Scripting Language",
-    MSC_SCRIPT_PRACT: "MSc - Scripting Language (Practical)"
 };
 
 function initDatePicker() {
